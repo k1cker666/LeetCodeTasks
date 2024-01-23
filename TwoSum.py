@@ -19,5 +19,5 @@ class TwoSum:
         answer = set(answer)  # убираем повторения в списке 
         print(f"Индексы чисел: {answer}")
         
-frst = TwoSum([3, 2, 4], 6)
+frst = TwoSum([2, 7, 11, 15], 9)
 frst.function()
