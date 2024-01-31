@@ -31,13 +31,26 @@ class TwoSum:
                     rtype.append(x)
                     rtype.append(y)
         rtype = set(rtype)
-        print(rtype) 
+        print(rtype)
+        
+    def function_version3(self):
+        print(f"Набор чисел: {self.nums}")
+        print(f"Ожидаемая сумма: {self.target}")
+        rtype = list()
+        dictionary = dict()
+        for i in range(len(self.nums)):
+            diff = self.target - self.nums[i]
+            if diff in dictionary:
+                print([dictionary[diff], i])
+            else:
+                dictionary[self.nums[i]] = i
+                
         
 frst = TwoSum([3, 3], 6)
-frst.function_version2()
+frst.function_version3()
 
 scnd = TwoSum([2, 7, 11, 15], 9)
-scnd.function_version2()
+scnd.function_version3()
 
 thrd = TwoSum([3, 2, 4], 6)
-thrd.function_version2()
+thrd.function_version3()
