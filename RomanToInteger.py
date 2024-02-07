@@ -45,9 +45,6 @@ class Solution:
                 result.append(answer)
         return print(sum(result))
 
-    def romanToIntNW(self):
-            s = list(self.s.upper())
-
 frst = Solution("iii")
 frst.romanToInt()
 
