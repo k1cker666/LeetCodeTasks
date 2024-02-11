@@ -7,16 +7,50 @@ class TwoSum:
         self.target = target
         
     def function(self):
+        print(f"Набор чисел: {self.nums}")  # выводим исходный набор
+        print(f"Ожидаемая сумма: {self.target}")  # выводим ожидаемый реузльтат
+        rtype = list()  # создаем список для сохранения ответов 
+        for x in range(0, len(self.nums)):  # индекс первого слагаемого
+            for y in range(0, len(self.nums)):  # индекс второго слагаемого
+                if x == y:
+                    continue
+                if self.nums[x] + self.nums[y] == self.target:  # сравниеваем сумму
+                    rtype.append(x)  # сохраняем в список первый индекс
+                    rtype.append(y)  # сохраняем в список второй индекс 
+        rtype = set(rtype)  # убираем повторения в списке 
+        print(f"Индексы чисел: {rtype}")
+        
+    def function_version2(self):
         print(f"Набор чисел: {self.nums}")
         print(f"Ожидаемая сумма: {self.target}")
-        answer = list()
+        rtype = list()
         for x in range(0, len(self.nums)):
-            for y in range(0, len(self.nums)):
-                if self.nums[x] + self.nums[y] == self.target:
-                    answer.append(x)
-                    answer.append(y)
-        answer = set(answer)
-        print(f"Индексы чисел: {answer}")
+            if (self.target - self.nums[x]) in self.nums: 
+                y = self.nums.index(self.target - self.nums[x])
+                if x != y:
+                    rtype.append(x)
+                    rtype.append(y)
+        rtype = set(rtype)
+        print(rtype)
         
-frst = TwoSum([3, 2, 7, 9], 10)
-frst.function()
+    def function_version3(self):
+        print(f"Набор чисел: {self.nums}")
+        print(f"Ожидаемая сумма: {self.target}")
+        rtype = list()
+        dictionary = dict()
+        for i in range(len(self.nums)):
+            diff = self.target - self.nums[i]
+            if diff in dictionary:
+                print([dictionary[diff], i])
+            else:
+                dictionary[self.nums[i]] = i
+                
+        
+frst = TwoSum([3, 3], 6)
+frst.function_version3()
+
+scnd = TwoSum([2, 7, 11, 15], 9)
+scnd.function_version3()
+
+thrd = TwoSum([3, 2, 4], 6)
+thrd.function_version3()
